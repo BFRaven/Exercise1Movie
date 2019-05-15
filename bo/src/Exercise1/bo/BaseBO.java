@@ -2,7 +2,7 @@ package Exercise1.bo;
 
 public class BaseBO {
 
-    // region PROPERTY
+    // region PARAMETER
     /*integers, all of the properties have identical primitive types
     of Id;
      */
