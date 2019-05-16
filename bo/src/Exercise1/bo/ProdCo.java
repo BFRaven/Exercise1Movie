@@ -12,6 +12,12 @@ public class ProdCo extends BaseBO {
     // endregion
 
 
+    // region CONSTRUCTORS
+
+    public ProdCo() {}
+
+    // endregion
+
     // region GETTERS / SETTERS
 
     public int getProdCoId() {

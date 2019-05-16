@@ -1,6 +1,7 @@
 package Exercise1.bo;
 
-import java.io.Serializable;
+
+import static common.helpers.StringHelper.isNullOfEmpty;
 
 public class Person extends BaseBO {
 
@@ -13,14 +14,6 @@ public class Person extends BaseBO {
     // endregion
 
     // region CONSTRUCTORS
-
-    public Person() {}
-
-    public Person(String firstName, String lastName) {
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-    }
-
 
 
 
@@ -52,6 +45,28 @@ public class Person extends BaseBO {
 
     public void setLastName(String lastName) {
         this.LastName = lastName;
+    }
+
+
+
+    // endregion
+
+    // region CUSTOM METHODS
+
+    public String GetFullName() {
+        if(isNullOfEmpty(this.FirstName) && isNullOfEmpty(this.LastName)) {
+            return "No name is set";
+        } else {
+
+            if(isNullOfEmpty(this.FirstName))
+                return this.LastName;
+            else if (isNullOfEmpty(this.LastName))
+                return this.FirstName;
+            else
+                return this.FirstName + " " + this.LastName;
+
+        }
+
     }
 
 

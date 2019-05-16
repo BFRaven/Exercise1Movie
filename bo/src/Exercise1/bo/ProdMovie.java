@@ -8,13 +8,20 @@ public class ProdMovie extends BaseBO {
     private int ProdMovieId;
 
     // ProdCo = production company
-    private  ProdCo prodCoId;
-
-
+    private  ProdCo prodCo;
 
 
     // endregion
 
+
+    // region CONSTRUCTORS
+
+    public ProdMovie() {
+        this.prodCo = new ProdCo();
+    }
+
+
+    // endregion
 
     // region SETTERS / GETTERS
 
@@ -30,12 +37,12 @@ public class ProdMovie extends BaseBO {
     // endregion
 
     // region PRODCO
-    public ProdCo getProdCoId() {
-        return this.prodCoId;
+    public ProdCo getProdCo() {
+        return this.prodCo;
     }
 
-    public void setProdCoId(ProdCo prodCoId) {
-        this.prodCoId = prodCoId;
+    public void setProdCo(ProdCo prodCo) {
+        this.prodCo = prodCo;
     }
 
     // endregion

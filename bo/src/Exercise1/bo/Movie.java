@@ -11,6 +11,12 @@ public class Movie extends BaseBO {
 
     // endregion
 
+    // region CONSTRUCTORS
+
+    public Movie() {}
+
+
+    // endregion
 
     // region SETTERS / GETTERS
 

@@ -1,10 +1,10 @@
 package Exercise1.bo;
-import Exercise1.bo.Person;
+
 
 
 public class MovieDetails extends BaseBO {
 
-    // region PARAMETERS
+    // region PROPERTIES
 
     // MovieDetailsId
     private  int MovieDetailsId;
@@ -32,6 +32,15 @@ public class MovieDetails extends BaseBO {
 
 
     // region CONSTRUCTORS
+
+    // instantiating the Person object.
+     public MovieDetails() {
+        this.person = new Person();
+        this.MovieRole = new movieRole();
+        this.ratings = new Ratings();
+        this.movie = new Movie();
+        this.prodMovie = new ProdMovie();
+    }
 
 
 

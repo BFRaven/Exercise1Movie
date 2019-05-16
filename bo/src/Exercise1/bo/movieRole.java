@@ -8,11 +8,15 @@ public class movieRole extends BaseBO {
 
     private String MovieRole;
 
+    // endregion
 
+
+    // region CONSTRUCTORS
+
+    public movieRole() {}
 
 
     // endregion
-
 
     // region GETTERS / SETTERS
 

@@ -8,9 +8,13 @@ public class Ratings extends BaseBO {
 
     private String Rating;
 
-
     // endregion
 
+    // region CONSTRUCTORS
+
+    public Ratings() {}
+
+    // endregion
 
     // region GETTERS / SETTERS
 
