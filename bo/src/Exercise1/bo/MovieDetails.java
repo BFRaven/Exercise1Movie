@@ -1,6 +1,7 @@
 package Exercise1.bo;
 
 
+import java.util.List;
 
 public class MovieDetails extends BaseBO {
 
@@ -21,7 +22,8 @@ public class MovieDetails extends BaseBO {
     private movieRole MovieRole;
 
     // ProdMovie
-    private  ProdMovie prodMovie;
+    private List<ProdMovie> prodMovie;
+//    private ProdMovie prodMovie;
 
 
     // Ratings
@@ -33,14 +35,16 @@ public class MovieDetails extends BaseBO {
 
     // region CONSTRUCTORS
 
-    // instantiating the Person object.
-     public MovieDetails() {
-        this.person = new Person();
-        this.MovieRole = new movieRole();
-        this.ratings = new Ratings();
-        this.movie = new Movie();
-        this.prodMovie = new ProdMovie();
-    }
+
+//    public MovieDetails() {}
+
+//     public MovieDetails() {
+//        this.person = new Person();
+//        this.MovieRole = new movieRole();
+//        this.ratings = new Ratings();
+//        this.movie = new Movie();
+//        this.prodMovie = new ProdMovie();
+//    }
 
 
 
@@ -99,14 +103,21 @@ public class MovieDetails extends BaseBO {
 
     // region PRODMOVIE
 
-    public ProdMovie getProdMovie() {
-        return this.prodMovie;
-    }
+//    public ProdMovie getProdMovie() {
+//        return this.prodMovie;
+//    }
+//
+//    public void setProdMovie(ProdMovie prodMovie) {
+//        this.prodMovie = prodMovie;
+//    }
 
-    public void setProdMovie(ProdMovie prodMovie) {
+  public List<ProdMovie> getProdMovie() {
+        return prodMovie;
+     }
+
+    public void setProdMovie(List<ProdMovie> prodMovie) {
         this.prodMovie = prodMovie;
     }
-
 
     //endregion
 
@@ -119,6 +130,7 @@ public class MovieDetails extends BaseBO {
     public void setRatings(Ratings ratings) {
         this.ratings = ratings;
     }
+
 
 
     // endregion

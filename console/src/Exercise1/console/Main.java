@@ -1,7 +1,10 @@
 package Exercise1.console;
 
-import Exercise1.bo.MovieDetails;
+import Exercise1.bo.*;
 
+
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +13,129 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*InstanceOfMovieDetails(); */
+//        InstanceOfMovieDetails();
 
-        CollectionOfMovieDetls();
+//        CollectionOfMovieDetls();
+
+//        DbConnection();
+//        ExecQuery();
+
+        CollMovieDetls2();
+    }
+
+    private static void CollMovieDetls2() {
+
+        MovieDetails fMovie = new MovieDetails();
+
+        Movie m = getMovie();
+        Ratings rtng = getRatings();
+        Person p = getPerson();
+
+        fMovie.setRatings(rtng);
+        fMovie.setMovie(m);
+        fMovie.setPerson(p);
+
+        System.out.println("Movie Title: " + fMovie.getMovie().getTitle());
+        System.out.println("Rating: " +  fMovie.getRatings().getRating());
+        System.out.println("Actor: " + fMovie.getPerson().GetFullName());
+
+
+        List<ProdMovie> mv = new ArrayList<ProdMovie>();
+        mv.add(getProdMovie());
+        fMovie.setProdMovie(mv);
+
+        for(ProdMovie pm: fMovie.getProdMovie()) {
+            System.out.println("Production Company: " + pm.getProdCo().getCompany());
+        }
+
+    }
+    // Creating Objects and setting the properties inside them
+
+    private static Movie getMovie() {
+        Movie m = new Movie();
+        m.setTitle("Resident Evil");
+        return m;
+    }
+
+    private static Ratings getRatings() {
+        Ratings rtng = new Ratings();
+        rtng.setRating("R");
+        return rtng;
+    }
+
+    private static Person getPerson() {
+        Person p = new Person();
+        p.setFirstName("Michelle");
+        p.setLastName("Rodriguez");
+        return p;
+    }
+
+    private static ProdMovie getProdMovie() {
+        ProdCo pc = new ProdCo("Constantin Films");
+        ProdMovie pm = new ProdMovie(pc);
+        return pm;
+    }
+
+
+
+
+
+
+
+    private static void ExecQuery() {
+        Connection conn = DbConnection();
+        try {
+            Statement statement = conn.createStatement();
+            String sql = "SELECT firstName, lastName FROM Person;";
+
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                System.out.println("FirstName: " + rs.getString(1) + " - LastName: " + rs.getString(2));
+            }
+            conn.close();
+
+        } catch (SQLException sqlEx) {
+            System.out.println(sqlEx);
+        }
+    }
+
+    private static Connection DbConnection() {
+
+        String dbHost = "localhost";
+        String dbName = "movies_db";
+        String dbUser = "root";
+        String dbPass = "root";
+
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch(ClassNotFoundException ex) {
+            System.out.println("My SQL Driver not found! " + ex);
+            return null;
+        }
+
+        System.out.println("My SQL Driver Registered.");
+        Connection connection = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://"+ dbHost + ":3306/" + dbName + "?useSSL=false",dbUser, dbPass);
+        } catch (SQLException ex) {
+            System.out.println("Connection failed!" + ex);
+            return null;
+        }
+
+        if(connection != null) {
+            System.out.println("Successfully connected to MySQL DB");
+            return connection;
+        } else {
+            System.out.println("Connection failed!");
+            return null;
+        }
     }
 
     private static void CollectionOfMovieDetls() {
 
-        List<MovieDetails> movieDetailsList = new ArrayList<MovieDetails>();
+       /* List<MovieDetails> movieDetailsList = new ArrayList<MovieDetails>();
 
         MovieDetails movieOne = new MovieDetails();
         movieOne.getPerson().setFirstName("Clint");
@@ -43,9 +161,9 @@ public class Main {
             System.out.println(m.getPerson().GetFullName() + " " + m.getMovie().getTitle() + " " + m.getMovieRole().getMovieRole() + " " + m.getRatings().getRating() + " " + m.getProdMovie().getProdCo().getCompany());
         }
 
-    }
+    } */
 
-    private static void InstanceOfMovieDetails() {
+   /* private static void InstanceOfMovieDetails() {
         // instantiating a new object of the MovieDetails class.
     MovieDetails movieDeatailsOne = new MovieDetails();
 
@@ -83,6 +201,7 @@ public class Main {
 
 
 
-    }
+    } */
 
+    }
 }

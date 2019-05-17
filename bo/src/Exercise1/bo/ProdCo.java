@@ -14,7 +14,9 @@ public class ProdCo extends BaseBO {
 
     // region CONSTRUCTORS
 
-    public ProdCo() {}
+    public ProdCo(String company) {
+        this.Company  = company;
+    }
 
     // endregion
 

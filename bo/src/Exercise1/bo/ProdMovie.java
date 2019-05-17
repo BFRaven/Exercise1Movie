@@ -16,9 +16,13 @@ public class ProdMovie extends BaseBO {
 
     // region CONSTRUCTORS
 
-    public ProdMovie() {
-        this.prodCo = new ProdCo();
+    public ProdMovie(ProdCo prodCo) {
+        this.prodCo = prodCo;
     }
+
+//    public ProdMovie() {
+//        this.prodCo = new ProdCo();
+//    }
 
 
     // endregion
