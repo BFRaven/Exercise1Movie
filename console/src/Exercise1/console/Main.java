@@ -1,12 +1,17 @@
 package Exercise1.console;
 
 import Exercise1.bo.*;
+import Exercise1.dao.Crud.CRUDdao;
+import Exercise1.dao.Crud.mysql.CRUDdaoImpl;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 
-
+import java.awt.image.VolatileImage;
+import java.net.CookieHandler;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
@@ -17,11 +22,285 @@ public class Main {
 
 //        CollectionOfMovieDetls();
 
-//        DbConnection();
+//          DbConnection();
+
+//          GetStoredProc();
+
 //        ExecQuery();
 
-        CollMovieDetls2();
+//        CollMovieDetls2();
+
+//          DAOMethods();
+
+//        InsertMethods();
+
+//          UpdateMethods();
+
+        DeleteMethods();
     }
+
+    private static void DeleteMethods() {
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        if(cruDdao.deleteMovie(4)) {
+//            System.out.println("Movie Deleted Successfully.");
+//        } else {
+//            System.out.println("Title Failed to Delete");
+//        }
+
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        if(cruDdao.deletePerson(6)) {
+//            System.out.println("Person Deleted Successfully.");
+//        } else {
+//            System.out.println("Person Failed to Delete");
+//        }
+
+
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        if(cruDdao.deleteMovieRole(4)) {
+//            System.out.println("Role Deleted Successfully.");
+//        } else {
+//            System.out.println("Role Failed to Delete");
+//        }
+
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        if(cruDdao.deleteProdCo(5)) {
+//            System.out.println("Company Deleted Successfully.");
+//        } else {
+//            System.out.println("Company Failed to Delete");
+//        }
+
+        CRUDdao cruDdao = new CRUDdaoImpl();
+
+        if(cruDdao.deleteRatings(4)) {
+            System.out.println("Rating Deleted Successfully.");
+        } else {
+            System.out.println("Rating Failed to Delete");
+        }
+
+    }
+
+    private static void UpdateMethods() {
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        Movie movie = cruDdao.getMovieById(4);
+//        movie.setTitle("Ironman 2");
+//
+//        if (cruDdao.updateMovie(movie)) {
+//
+//            System.out.println("Movie Title Updated Successfully");
+//        } else {
+//            System.out.println("Title failed to update");
+//        }
+
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        Person person = cruDdao.getPersonById(6);
+//        person.setFirstName("Gwyneth");
+//        person.setLastName("Paltrow");
+//
+//
+//        if (cruDdao.updatePerson(person)) {
+//
+//            System.out.println("Person Updated Successfully");
+//        } else {
+//            System.out.println("Person failed to update");
+//        }
+
+
+
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        movieRole movieRole = cruDdao.getMovieRoleById(4);
+//        movieRole.setMovieRole("Actress");
+//
+//        if (cruDdao.updateMovieRole(movieRole)) {
+//
+//            System.out.println("Movie Role Updated Successfully");
+//        } else {
+//            System.out.println("Role failed to update");
+//        }
+
+
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//
+//        ProdCo prodCo = cruDdao.getProdCoById(5);
+//        prodCo.setCompany("Paramount Pictures");
+//
+//        if (cruDdao.updateProdCo(prodCo)) {
+//
+//            System.out.println("Company Updated Successfully");
+//        } else {
+//            System.out.println("Company failed to update");
+//        }
+
+        CRUDdao cruDdao = new CRUDdaoImpl();
+
+        Ratings ratings = cruDdao.getRatingsById(4);
+        ratings.setRating("General");
+
+        if (cruDdao.updateRatings(ratings)) {
+
+            System.out.println("Ratings Updated Successfully");
+        } else {
+            System.out.println("Ratings failed to update");
+        }
+    }
+
+    private static void InsertMethods() {
+
+//        Movie movie = new Movie();
+//        movie.setTitle("Ironman");
+//
+//        CRUDdao cruDdao = new CRUDdaoImpl();
+//        int id = cruDdao.insertMovie(movie);
+//
+//        System.out.println("New Movie Title Inserted. ID = " + id);
+
+//        Person person = new Person();
+//        person.setFirstName("Robert");
+//        person.setLastName("Downey Jr.");
+//
+//        CRUDdao cruDdaoPer = new CRUDdaoImpl();
+//        int idPer = cruDdaoPer.insertPerson(person);
+//
+//        System.out.println("New Person Inserted. ID = " + idPer);
+
+
+//        movieRole movieRole = new movieRole();
+//        // this was added to test delete method later; no need for duplication.
+//        movieRole.setMovieRole("Actor");
+//
+//        CRUDdao cruDdaoPer = new CRUDdaoImpl();
+//        int idRole = cruDdaoPer.insertMovieRole(movieRole);
+//
+//        System.out.println("New Role Inserted. ID = " + idRole);
+
+//        ProdCo prodCo = new ProdCo();
+//        // this was added to test delete method later; no need for duplication.
+//        prodCo.setCompany("Marvel Studios");
+//
+//        CRUDdao cruDdaoPer = new CRUDdaoImpl();
+//        int idCo = cruDdaoPer.insertProdCo(prodCo);
+//
+//        System.out.println("New Production Company Inserted. ID = " + idCo);
+
+
+        Ratings ratings = new Ratings();
+        // this was added to test delete method later; no need for duplication.
+        ratings.setRating("G");
+
+        CRUDdao cruDdaoPer = new CRUDdaoImpl();
+        int idRating = cruDdaoPer.insertRatings(ratings);
+
+        System.out.println("New Rating Inserted. ID = " + idRating);
+    }
+
+    private static void DAOMethods() {
+
+        // region CREATE MENU
+        CRUDdao crudDao = new CRUDdaoImpl(); // fix next time;
+
+        // insert the desired lists of the CRUDdao interfaces that you want
+        List<Movie> movieList = crudDao.getMovieList();
+        List<Ratings> ratingsList = crudDao.getRatingsList();
+        List<Person> personList = crudDao.getPersonList();
+        List<movieRole> movieRoleList = crudDao.getMovieRoleList();
+        List<ProdCo> prodCoList = crudDao.getProdCoList();
+
+        // print out results
+        System.out.println("==============================");
+        for(Movie movie : movieList) {
+            System.out.println(movie.getMovieId() + ") " + movie.getTitle());
+        }
+        System.out.println("==============================");
+        for(Ratings ratings : ratingsList) {
+            System.out.println(ratings.getRatingsId() + ") " + ratings.getRating());
+        }
+        System.out.println("==============================");
+        for(Person person : personList) {
+            System.out.println(person.getPersonId() + ") " + person.GetFullName());
+        }
+        System.out.println("==============================");
+        for(movieRole movieRole : movieRoleList) {
+            System.out.println(movieRole.getRoleId() + ") " + movieRole.getMovieRole());
+        }
+        System.out.println("==============================");
+        for(ProdCo prodCo : prodCoList) {
+            System.out.println(prodCo.getProdCoId() + ") " + prodCo.getCompany());
+        }
+
+
+        // endregion
+
+
+        // region PROMPT USER
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Please Select a Movie from list: ");
+        String movieId = reader.nextLine();
+        System.out.println("Please Select a Rating from list: ");
+        String ratingsId = reader.nextLine();
+        System.out.println("Please Select a Person from list: ");
+        String personId = reader.nextLine();
+        System.out.println("Please Select a Role from list: ");
+        String roleId = reader.nextLine();
+        System.out.println("Please Select a Production Company from list: ");
+        String prodCoId = reader.nextLine();
+
+        // endregion
+
+
+        // region GET DETAILS
+
+        Movie movieDets = crudDao.getMovieById(Integer.parseInt(movieId));
+        Ratings ratingsDets = crudDao.getRatingsById(Integer.parseInt(ratingsId));
+        Person personDets = crudDao.getPersonById(Integer.parseInt(personId));
+        movieRole roleDets = crudDao.getMovieRoleById(Integer.parseInt(roleId));
+        ProdCo companyDets = crudDao.getProdCoById(Integer.parseInt(prodCoId));
+
+        System.out.println("--------- DETAILS ----------");
+        System.out.println("Person : " + personDets.GetFullName());
+
+        System.out.println("Movie Title: " + movieDets.getTitle());
+        System.out.println("Movie Rating : " + ratingsDets.getRating());
+        System.out.println("Role of Person in Movie: " + roleDets.getMovieRole());
+        System.out.println("Production Company: " + companyDets.getCompany());
+
+        // endregion
+
+    }
+
+
+    private static void GetStoredProc() {
+        Connection conn = DbConnection();
+        try {
+            String sp = "{call GetPersonProc(?, ?)}";
+            CallableStatement cStmt = conn.prepareCall(sp);
+            cStmt.setInt(1, 20);
+            cStmt.setInt(2,0);
+            ResultSet rs = cStmt.executeQuery();
+
+            while (rs.next()) {
+                /*
+
+                    PersonId          index 1   INT
+					firstName         index 2   VARCHAR
+					lastName          index 3   VARCHAR
+
+                */
+                System.out.println(rs.getInt(1) + ": " + rs.getString(2) + " " + rs.getString(3));
+            }
+
+
+        } catch (SQLException sqlEx) {
+            System.out.println(sqlEx);
+        }
+
+    }
+
 
     private static void CollMovieDetls2() {
 
@@ -86,11 +365,15 @@ public class Main {
         Connection conn = DbConnection();
         try {
             Statement statement = conn.createStatement();
-            String sql = "SELECT firstName, lastName FROM Person;";
+            String sql = "SELECT PersonId, firstName, lastName FROM Person;";
 
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                System.out.println("FirstName: " + rs.getString(1) + " - LastName: " + rs.getString(2));
+                int personId = rs.getInt(1);
+                String firstName = rs.getString(2);
+                String lastName = rs.getString(3);
+
+                System.out.println("Person ID: " + personId + " - FirstName: " + firstName + " - LastName: " + lastName);
             }
             conn.close();
 
@@ -105,6 +388,9 @@ public class Main {
         String dbName = "movies_db";
         String dbUser = "root";
         String dbPass = "root";
+        String useSSL = "false";
+        // This parameter allows us run stored procedures, added to the connection query.
+        String procBod = "true";
 
 
         try {
@@ -118,7 +404,7 @@ public class Main {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://"+ dbHost + ":3306/" + dbName + "?useSSL=false",dbUser, dbPass);
+            connection = DriverManager.getConnection("jdbc:mysql://"+ dbHost + ":3306/" + dbName + "?useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod,dbUser, dbPass);
         } catch (SQLException ex) {
             System.out.println("Connection failed!" + ex);
             return null;
